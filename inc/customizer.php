@@ -25,6 +25,24 @@ function clean_customize_register( $wp_customize ) {
 			'render_callback' => 'clean_customize_partial_blogdescription',
 		) );
 	}
+
+	//Clean theme settings
+
+    $wp_customize->add_section('clean_theme_options', [
+        'title' => __('Theme Options', 'clean'),
+        'priority' => 10
+    ]);
+
+	$wp_customize->add_setting('clean_home_category', [
+	    'default' => '',
+        //'transport' => 'postMessage'
+    ]);
+
+	$wp_customize->add_control('clean_home_category', [
+	    'label' => __('Category from main page', 'clean'),
+	    'section' => 'clean_theme_options',
+        'type' => 'text'
+    ]);
 }
 add_action( 'customize_register', 'clean_customize_register' );
 

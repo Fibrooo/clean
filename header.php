@@ -21,38 +21,42 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'clean' ); ?></a>
+<header id="fh5co-header" role="banner">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="navbar-header">
+                        <!-- Mobile Toggle Menu Button -->
+                        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle visible-xs-block" data-toggle="collapse" data-target="#fh5co-navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                        <?php if(is_front_page()): ?>
+                            <p class="navbar-brand"><?php bloginfo('name') ?></p>
+                        <?php else: ?>
+                            <a class="navbar-brand" href="<?php echo home_url('/') ?>"><?php bloginfo('name') ?></a>
+                        <?php endif; ?>
+                    </div>
+                    <div id="fh5co-navbar" class="navbar-collapse collapse">
+                        <?php wp_nav_menu([
+                                'theme-location' => 'menu-1',
+                                'menu_class' => 'nav navbar-nav navbar-right'
+                        ]) ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- END .header -->
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$clean_description = get_bloginfo( 'description', 'display' );
-			if ( $clean_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $clean_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'clean' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
-
-	<div id="content" class="site-content">
+<div id="fh5co-main">
+    <div class="fh5co-intro text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h1 class="intro-lead"><?php bloginfo('description') ?></h1>
+                    <p class="">100% Free HTML5 Template by <a href="http://freehtml5.co/" target="_blank">FREEHTML5.co</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
